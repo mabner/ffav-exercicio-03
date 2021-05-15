@@ -42,7 +42,7 @@ export default {
   // },
   methods: {
     onFormSubmit() {
-      this.$store.dispatch("AddProduct", {
+      this.$store.dispatch("addProduct", {
         productName: this.productName,
         productPrice: this.productPrice,
         productCategory: this.productCategory,
