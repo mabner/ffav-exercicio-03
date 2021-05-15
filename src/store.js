@@ -1,28 +1,26 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 
-Vue.use( VueRouter );
 Vue.use( Vuex );
 
 export const store = new Vuex.Store( {
 	state: {
 		products: [
-			{
-				productName: 'Base Triskle 3x110 completa',
-				productPrice: '499,00',
-				productCategory: 'Bases',
-			},
-			{
-				productName: 'Mochila Traxart Wild',
-				productPrice: '250,00',
-				productCategory: 'Mochilas',
-			},
-			{
-				productName: 'Kit de Proteção Traxart DG 300',
-				productPrice: '279,00',
-				productCategory: 'Proteções',
-			},
+			// {
+			// 	productName: 'Base Triskle 3x110 completa',
+			// 	productPrice: '499,00',
+			// 	productCategory: 'Bases',
+			// },
+			// {
+			// 	productName: 'Mochila Traxart Wild',
+			// 	productPrice: '250,00',
+			// 	productCategory: 'Mochilas',
+			// },
+			// {
+			// 	productName: 'Kit de Proteção Traxart DG 300',
+			// 	productPrice: '279,00',
+			// 	productCategory: 'Proteções',
+			// },
 		],
 	},
 	getters: {
@@ -35,9 +33,9 @@ export const store = new Vuex.Store( {
 		addProduct ( state, product )
 		{
 			state.products.push( {
-				name: product.productName,
-				price: product.productPrice,
-				category: product.productCategory,
+				productName: product.productName,
+				productPrice: product.productPrice,
+				productCategory: product.productCategory,
 			} );
 		},
 	},

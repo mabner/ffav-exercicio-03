@@ -3,25 +3,14 @@
     <div>
       <SearchBar :onSearch="handleSearchProducts" />
     </div>
-
     <div>
-      <ProductsList
-        :products="listedProducts.length > 0 ? listedProducts : products"
-      />
-    </div>
-
-    <div>
-      <br />
-      <h1>{{ $store.state.count }}</h1>
-    </div>
-
-    <div>
-      <ul>
-        <li v-for="product in products" :key="product.productName">
-          <!-- {{ product.name }} | {{ product.price }} | {{ product.category }} -->
-          <ProductItem :product="product" />
-        </li>
-      </ul>
+      <div>
+        <ProductItem
+          v-for="product in products"
+          :key="product.productName"
+          :product="product"
+        />
+      </div>
       {{ totalProducts }}
     </div>
   </div>
@@ -29,8 +18,7 @@
 
 <script>
 import ProductItem from "./ProductItem";
-import ProductsList from "./components/ProductsList";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./SearchBar";
 
 export default {
   data() {
@@ -44,12 +32,11 @@ export default {
   },
   components: {
     ProductItem,
-    ProductsList,
     SearchBar,
   },
   computed: {
     totalProducts() {
-      const totalProd = this.$store.products.length;
+      const totalProd = this.$store.state.products.length;
       return totalProd > 1
         ? `${totalProd} items found.`
         : `${totalProd} item found.`;

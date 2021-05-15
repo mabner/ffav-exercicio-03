@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Vuex from 'vuex';
 
 import { store } from './store';
 
@@ -10,7 +9,6 @@ import ProductsList from './components/ProductsList.vue';
 
 Vue.config.productionTip = false;
 Vue.use( VueRouter );
-Vue.use( Vuex );
 
 const routes = [ {
 	path: '/products', component: ProductsList
