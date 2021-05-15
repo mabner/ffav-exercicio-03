@@ -1,10 +1,25 @@
 <template>
   <div>
     <div>
+      <SearchBar :onSearch="handleSearchProducts" />
+    </div>
+
+    <div>
+      <ProductsList
+        :products="listedProducts.length > 0 ? listedProducts : products"
+      />
+    </div>
+
+    <div>
+      <br />
+      <h1>{{ $store.state.count }}</h1>
+    </div>
+
+    <div>
       <ul>
         <li v-for="product in products" :key="product.productName">
           <!-- {{ product.name }} | {{ product.price }} | {{ product.category }} -->
-          <ProductItem :product="product"/>
+          <ProductItem :product="product" />
         </li>
       </ul>
       {{ totalProducts }}
@@ -13,7 +28,9 @@
 </template>
 
 <script>
-import ProductItem from './ProductItem';
+import ProductItem from "./ProductItem";
+import ProductsList from "./components/ProductsList";
+import SearchBar from "./components/SearchBar";
 
 export default {
   data() {
@@ -21,19 +38,21 @@ export default {
       listedProducts: [],
     };
   },
-  name: 'ProductsList',
+  name: "ProductsList",
   props: {
     products: Array,
   },
   components: {
     ProductItem,
+    ProductsList,
+    SearchBar,
   },
   computed: {
     totalProducts() {
-      const totalProd = this.products.length;
+      const totalProd = this.$store.products.length;
       return totalProd > 1
-          ? `${totalProd} items found.`
-          : `${totalProd} item found.`;
+        ? `${totalProd} items found.`
+        : `${totalProd} item found.`;
     },
   },
   methods: {
