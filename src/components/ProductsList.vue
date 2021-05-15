@@ -16,6 +16,11 @@
 import ProductItem from './ProductItem';
 
 export default {
+  data() {
+    return {
+      listedProducts: [],
+    };
+  },
   name: 'ProductsList',
   props: {
     products: Array,
@@ -29,6 +34,25 @@ export default {
       return totalProd > 1
           ? `${totalProd} items found.`
           : `${totalProd} item found.`;
+    },
+  },
+  methods: {
+    handleOnAddProduct(product) {
+      // console.log(product);
+      this.products = this.products.concat(product);
+    },
+    handleSearchProducts(productName) {
+      const results = this.products.filter((prod) =>
+        prod.productName.startsWith(productName)
+      );
+      if (results.length > 0) {
+        this.listedProducts = results;
+      } else {
+        this.listedProducts = this.products;
+      }
+    },
+    increment() {
+      this.$store.dispatch("increment");
     },
   },
 };
