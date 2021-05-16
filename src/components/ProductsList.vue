@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <input v-model="searchProducts" type="text"/>
+      <input v-model="searchProducts" type="text" />
     </div>
     <div>
       <div>
@@ -40,7 +40,7 @@ export default {
     },
   },
   watch: {
-    searchProducts: function (prod) {
+    searchProducts(prod) {
       prod = prod.toLowerCase();
       if (this.listedProducts.length === 0) {
         this.listedProducts = this.products;
@@ -57,7 +57,6 @@ export default {
     handleOnAddProduct(product) {
       this.products = this.products.concat(product);
     },
-
   },
 };
 </script>

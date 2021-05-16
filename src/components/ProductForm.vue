@@ -5,21 +5,37 @@
       <div>
         <p>
           <label for="productName">Nome: </label>
-          <input id="productName" v-model="productName" type="text" />
+          <input
+            id="productName"
+            v-model="productName"
+            type="text"
+            class="form-field"
+          />
         </p>
       </div>
       <p>
         <label for="productPrice">Preço: </label>
-        <input id="productPrice" v-model="productPrice" type="text" />
+        <input
+          id="productPrice"
+          v-model="productPrice"
+          type="text"
+          class="form-field"
+        />
       </p>
       <p>
         <label for="productCategory">Categoria: </label>
-        <input id="productCategory" v-model="productCategory" type="text" />
+        <input
+          id="productCategory"
+          v-model="productCategory"
+          type="text"
+          class="form-field"
+        />
       </p>
       <button :disabled="disabled" type="submit">Enviar</button>
     </form>
     <p>
-      {{ productName }}<br />{{ productPrice }}<br />{{ productCategory }}<br />
+      {{ formMessage }}<br />
+      {{ productName }} {{ productPrice }} {{ productCategory }}
     </p>
   </div>
 </template>
@@ -35,11 +51,9 @@ export default {
       isNameLimitExceeded: "",
       products: [],
       disabled: false,
+      formMessage: "",
     };
   },
-  // props: {
-  //   onAddProduct: Function,
-  // },
   methods: {
     onFormSubmit() {
       this.$store.dispatch("addProduct", {
@@ -47,6 +61,10 @@ export default {
         productPrice: this.productPrice,
         productCategory: this.productCategory,
       });
+      this.productName = "";
+      this.productPrice = "";
+      this.productCategory = "";
+      this.formMessage = "Product recorded";
     },
     handleOnAddProduct(product) {
       this.products = this.products.concat(product);
