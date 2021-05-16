@@ -24,12 +24,14 @@ export default {
   data() {
     return {
       listedProducts: [],
+      searchProducts: "",
+      products: this.$store.getters.getProducts,
     };
   },
   name: "ProductsList",
-  props: {
-    products: Array,
-  },
+  // props: {
+  //   products: Array,
+  // },
   components: {
     ProductItem,
     SearchBar,
@@ -42,24 +44,35 @@ export default {
         : `${totalProd} item found.`;
     },
   },
+  watch: {
+    searchProducts: function (prod) {
+      prod = prod.toLowerCase();
+      if (this.listedProducts.length === 0) {
+        this.listedProducts = this.products;
+      }
+      this.products = this.products.filter(
+        (item) => item.productName.toLowerCase().indexOf(prod) !== -1
+      );
+      if (prod.length === 0) {
+        this.products = this.listedProducts;
+      }
+    },
+  },
   methods: {
     handleOnAddProduct(product) {
       // console.log(product);
       this.products = this.products.concat(product);
     },
-    handleSearchProducts(productName) {
-      const results = this.products.filter((prod) =>
-        prod.productName.startsWith(productName)
-      );
-      if (results.length > 0) {
-        this.listedProducts = results;
-      } else {
-        this.listedProducts = this.products;
-      }
-    },
-    increment() {
-      this.$store.dispatch("increment");
-    },
+    // handleSearchProducts(productName) {
+    //   const results = this.products.filter((prod) =>
+    //     prod.productName.startsWith(productName)
+    //   );
+    //   if (results.length > 0) {
+    //     this.listedProducts = results;
+    //   } else {
+    //     this.listedProducts = this.products;
+    //   }
+    // },
   },
 };
 </script>
