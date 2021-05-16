@@ -4,7 +4,7 @@
       <input v-model="searchProducts" type="text" />
     </div>
     <div>
-      <div>
+      <div class="card bg-light mb-3 " style="width: 28rem">
         <ProductItem
           v-for="product in products"
           :key="product.productName"

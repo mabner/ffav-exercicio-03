@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <Header pageHeader="Product List" />
-    <router-view />
+    <div class="container">
+      <div class="col-md-6">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h3>{{ product.productName }}</h3>
-    <h5>{{ product.productCategory }}</h5>
-    <h4>{{ product.productPrice }}</h4>
+  <div class="card-body list-group list-group-flush">
+    <h3 class="card-title">{{ product.productName }}</h3>
+    <h5 class="subtitle">Categoria: {{ product.productCategory }}</h5>
+    <h4 class="card-text">R$ {{ product.productPrice }}</h4>
   </div>
 </template>
 

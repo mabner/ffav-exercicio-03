@@ -9,18 +9,18 @@ export const store = new Vuex.Store( {
 			{
 				productName: 'Base Triskle 3x110 completa',
 				productPrice: '499,00',
-				productCategory: 'Bases',
+				productCategory: 'Patins',
 			},
-			// {
-			// 	productName: 'Mochila Traxart Wild',
-			// 	productPrice: '250,00',
-			// 	productCategory: 'Mochilas',
-			// },
-			// {
-			// 	productName: 'Kit de Proteção Traxart DG 300',
-			// 	productPrice: '279,00',
-			// 	productCategory: 'Proteções',
-			// },
+			{
+				productName: 'Carretilha Marine Sport',
+				productPrice: '248,00',
+				productCategory: 'Pesca',
+			},
+			{
+				productName: 'Achocolatado Toddy Black 500g',
+				productPrice: '8,99',
+				productCategory: 'Alimentos',
+			},
 		],
 	},
 	getters: {

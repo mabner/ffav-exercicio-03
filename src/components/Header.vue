@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>{{ pageHeader }}</h1>
+    <h1>{{ pageHeader }} <small class="text-muted">Exercise 3 - Vue.js</small></h1>
     <router-link class="topLink" to="/">Form</router-link>
     <router-link class="topLink" to="/products">List</router-link>
   </header>

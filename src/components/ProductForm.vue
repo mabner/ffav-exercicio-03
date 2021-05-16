@@ -1,42 +1,49 @@
 <template>
   <div>
-    <span>{{ isNameLimitExceeded }}</span>
     <form v-on:submit.prevent="onFormSubmit">
-      <div>
-        <p>
-          <label for="productName">Nome: </label>
-          <input
-            id="productName"
-            v-model="productName"
-            type="text"
-            class="form-field"
-          />
-        </p>
+      <div class="form-floating mb-1">
+        <input
+          id="productName"
+          v-model="productName"
+          type="text"
+          class="form-control"
+        />
+        <label for="productName" form-label>Nome:</label>
+        <span class="form-text text-danger">
+          {{ isNameLimitExceeded }}
+        </span>
       </div>
-      <p>
-        <label for="productPrice">Preço: </label>
+
+      <div class="form-floating mb-1">
         <input
           id="productPrice"
           v-model="productPrice"
           type="text"
-          class="form-field"
+          class="form-control"
         />
-      </p>
-      <p>
-        <label for="productCategory">Categoria: </label>
+        <label for="productPrice" form-label>Preço:</label>
+      </div>
+
+      <div class="form-floating mb-1">
         <input
           id="productCategory"
           v-model="productCategory"
           type="text"
-          class="form-field"
+          class="form-control"
         />
-      </p>
-      <button :disabled="disabled" type="submit">Enviar</button>
+        <label for="productCategory" form-label>Categoria:</label>
+      </div>
+      <button :disabled="disabled" type="submit" class="btn btn-primary">
+        Enviar
+      </button>
     </form>
-    <p>
-      {{ formMessage }}<br />
-      {{ productName }} {{ productPrice }} {{ productCategory }}
-    </p>
+
+    <div class="mb-3">
+      <span id="recordMsg" class="text-success"></span>
+      <span id="productText" class="text-primary"
+        >{{ productName }} {{ productPrice }} {{ productCategory }}</span
+      >
+    </div>
   </div>
 </template>
 
@@ -51,7 +58,6 @@ export default {
       isNameLimitExceeded: "",
       products: [],
       disabled: false,
-      formMessage: "",
     };
   },
   methods: {
@@ -64,7 +70,10 @@ export default {
       this.productName = "";
       this.productPrice = "";
       this.productCategory = "";
-      this.formMessage = "Product recorded";
+      document.getElementById("recordMsg").innerHTML = "Product recorded!"
+      setTimeout(function () {
+        document.getElementById("recordMsg").innerHTML = "";
+      }, 3000);
     },
     handleOnAddProduct(product) {
       this.products = this.products.concat(product);
