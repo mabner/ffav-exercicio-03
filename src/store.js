@@ -6,11 +6,11 @@ Vue.use( Vuex );
 export const store = new Vuex.Store( {
 	state: {
 		products: [
-			// {
-			// 	productName: 'Base Triskle 3x110 completa',
-			// 	productPrice: '499,00',
-			// 	productCategory: 'Bases',
-			// },
+			{
+				productName: 'Base Triskle 3x110 completa',
+				productPrice: '499,00',
+				productCategory: 'Bases',
+			},
 			// {
 			// 	productName: 'Mochila Traxart Wild',
 			// 	productPrice: '250,00',

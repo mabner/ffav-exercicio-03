@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <SearchBar :onSearch="handleSearchProducts" />
+      <input v-model="searchProducts" type="text"/>
     </div>
     <div>
       <div>
@@ -18,23 +18,18 @@
 
 <script>
 import ProductItem from "./ProductItem";
-import SearchBar from "./SearchBar";
 
 export default {
   data() {
     return {
-      listedProducts: [],
       searchProducts: "",
+      listedProducts: [],
       products: this.$store.getters.getProducts,
     };
   },
   name: "ProductsList",
-  // props: {
-  //   products: Array,
-  // },
   components: {
     ProductItem,
-    SearchBar,
   },
   computed: {
     totalProducts() {
@@ -60,19 +55,9 @@ export default {
   },
   methods: {
     handleOnAddProduct(product) {
-      // console.log(product);
       this.products = this.products.concat(product);
     },
-    // handleSearchProducts(productName) {
-    //   const results = this.products.filter((prod) =>
-    //     prod.productName.startsWith(productName)
-    //   );
-    //   if (results.length > 0) {
-    //     this.listedProducts = results;
-    //   } else {
-    //     this.listedProducts = this.products;
-    //   }
-    // },
+
   },
 };
 </script>
